@@ -10,11 +10,11 @@ import java.awt.Point;
  */
 public class Game {
 
-	private Grid grid; // the grid that makes up the Tetris board
+	Grid grid; // the grid that makes up the Tetris board
 
 	private Tetris display; // the visual for the Tetris game
 
-	private Shape piece; // the current piece that is dropping
+	Piece piece; // the current piece that is dropping
 
 	private boolean isOver; // has the game finished?
 
@@ -26,8 +26,32 @@ public class Game {
 	public Game(Tetris display) {
 		grid = new Grid();
 		this.display = display;
-		piece = new Shape(1, Grid.WIDTH / 2 - 1, grid);
+		piece = getRandomPiece();
 		isOver = false;
+	}
+
+	private Piece getRandomPiece() {
+		double random = Math.round(Math.random() * 7);
+		if (random == 0) {
+			return new JShape(1, Grid.WIDTH / 2 - 1, grid);
+		}
+		if (random == 1) {
+			return new JShape(1, Grid.WIDTH / 2 - 1, grid);
+		}
+		if (random == 2) {
+			return new JShape(1, Grid.WIDTH / 2 - 1, grid);
+		}
+		if (random == 3) {
+			return new JShape(1, Grid.WIDTH / 2 - 1, grid);
+		}
+		if (random == 4) {
+			return new JShape(1, Grid.WIDTH / 2 - 1, grid);
+		}
+		if (random == 5) {
+			return new JShape(1, Grid.WIDTH / 2 - 1, grid);
+		} else {
+			return new LShape(1, Grid.WIDTH / 2 - 1, grid);
+		}
 	}
 
 	/**
@@ -49,7 +73,12 @@ public class Game {
 	 */
 	public void movePiece(Direction direction) {
 		if (piece != null) {
-			piece.move(direction);
+			if (direction == Direction.ROTATE) {
+				//rotate the piece
+				piece.rotate();
+			} else {
+				piece.move(direction);
+			}
 		}
 		updatePiece();
 		display.update();
@@ -86,7 +115,7 @@ public class Game {
 	private void updatePiece() {
 		if (piece == null) {
 			// CREATE A NEW PIECE HERE
-			piece = new Shape(1, Grid.WIDTH / 2 - 1, grid);
+			piece = getRandomPiece();
 		}
 
 		// set Grid positions corresponding to frozen piece
