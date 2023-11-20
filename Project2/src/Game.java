@@ -36,19 +36,19 @@ public class Game {
 			return new JShape(1, Grid.WIDTH / 2 - 1, grid);
 		}
 		if (random == 1) {
-			return new JShape(1, Grid.WIDTH / 2 - 1, grid);
+			return new ZShape(1, Grid.WIDTH / 2 - 1, grid);
 		}
 		if (random == 2) {
-			return new JShape(1, Grid.WIDTH / 2 - 1, grid);
+			return new SquareShape(1, Grid.WIDTH / 2 - 1, grid);
 		}
 		if (random == 3) {
-			return new JShape(1, Grid.WIDTH / 2 - 1, grid);
+			return new TShape(1, Grid.WIDTH / 2 - 1, grid);
 		}
 		if (random == 4) {
-			return new JShape(1, Grid.WIDTH / 2 - 1, grid);
+			return new SShape(1, Grid.WIDTH / 2 - 1, grid);
 		}
 		if (random == 5) {
-			return new JShape(1, Grid.WIDTH / 2 - 1, grid);
+			return new BarShape(1, Grid.WIDTH / 2 - 1, grid);
 		} else {
 			return new LShape(1, Grid.WIDTH / 2 - 1, grid);
 		}
